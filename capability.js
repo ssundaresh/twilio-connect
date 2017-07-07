@@ -33,7 +33,7 @@ response.send("Success!!");
 });
 
 capability.get('/home', function(request, response) {
-    response.render('connect.ejs');
+    response.render('/views/connect.ejs');
 });
 
 // Create http server and run it
