@@ -1,0 +1,67 @@
+
+  <html>
+
+  <head>
+    <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/releases/1.4.3/twilio.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <link href="//static0.twilio.com/packages/quickstart/client.css" type="text/css" rel="stylesheet" />
+    <title>Browser Phone</title>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      Twilio.Device.setup('<%= token %>', {
+        'debug': true
+      });
+      Twilio.Device.ready(function(device) {
+        $("#log").text("Ready");
+      });
+
+      Twilio.Device.error(function(error) {
+        $("#log").text("Error: " + error.message);
+      });
+
+      Twilio.Device.connect(function(conn) {
+        $("#log").text("Successfully established call");
+        conn.on(' warning ', function(name) {
+          switch (name) {
+            case ' high jitter': alert(name);
+            case ' high rtt': alert(name);
+            case ' high packet loss ': alert(name);
+            case ' constant audio inputlevel ': alert(name);
+          }
+        });
+      });
+
+      Twilio.Device.incoming(function(connection) {
+        if (confirm('Accept incoming call from ' + connection.parameters.From + '?')) {
+          connection.accept();
+        }
+        else {
+          connection.reject();
+        }
+      });
+
+      function call() {
+        Twilio.Device.connect({
+          tocall: "+14158940597"
+        });
+      }
+
+      function hangup() {
+        Twilio.Device.disconnectAll();
+        $("#log").text("Call ended");
+      }
+    </script>
+
+    <button class="call" onclick="call();">
+      Call
+    </button>
+    <button class="hangup" onclick="hangup();">
+      Hangup
+    </button>
+    <div id="log">Loading...</div>
+  </body>
+
+  </html>

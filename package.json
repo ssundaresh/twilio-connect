@@ -1,0 +1,17 @@
+{
+  "name": "all_my_demos",
+  "version": "0.0.0",
+  "description": "A demo space",
+  "main": "server.js",
+  "repository": "",
+  "author": "Shruti",
+  "dependencies": {
+    "async": "~0.2.8",
+    "elasticsearch": "^12.1.3",
+    "express": "~3.2.4",
+    "get-json": "0.0.3",
+    "http-auth": "^3.1.1",
+    "moment": "^2.17.1",
+    "socket.io": "~0.9.14"
+  }
+}
