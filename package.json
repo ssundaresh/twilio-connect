@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "A demo space",
   "main": "capability.js",
+  "scripts": {
+"start": "node capability.js"
+  },
   "repository": "",
   "author": "Shruti",
   "dependencies": {
