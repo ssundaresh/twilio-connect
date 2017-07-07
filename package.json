@@ -2,7 +2,7 @@
   "name": "all_my_demos",
   "version": "0.0.0",
   "description": "A demo space",
-  "main": "server.js",
+  "main": "capability.js",
   "repository": "",
   "author": "Shruti",
   "dependencies": {
